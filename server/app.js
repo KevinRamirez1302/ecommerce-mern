@@ -3,17 +3,20 @@ import mongoose from 'mongoose'
 const app = express()
 const PORT = process.env.PORT ?? 3000
 import { createRequire } from 'node:module'
-import { productModel } from '../server/Database/models/product.js'
+import { productModel } from './models/product.js'
 const require = createRequire(import.meta.url)
+const user = 'KevinAlexander13'
+const password = 'Aka13020303'
+const dbname = 'SellAll'
 
 mongoose.connect(
-  'mongodb+srv://KevinAlexander13:Aka13020303@cluster0.xg7o66k.mongodb.net/SellAll?retryWrites=true&w=majority'
+  `mongodb+srv://${user}:${password}@cluster0.xg7o66k.mongodb.net/${dbname}?retryWrites=true&w=majority`
 )
 
 const data = require('./products.json')
 
-app.get('/getProducts', (req, res) => {
-  productModel.find().then((err, result) => {
+app.get('/getProducts', async (req, res) => {
+  await productModel.find().then((err, result) => {
     if (err) {
       res.json(err)
     } else {
@@ -22,10 +25,9 @@ app.get('/getProducts', (req, res) => {
   })
 })
 
-app.get('/Products/:id', (req, res) => {
+app.get('/Products/:id', async (req, res) => {
   const id = req.params.id
-
-  const product = data[0].productos.find((obj) => obj.id === id)
+  const product = await productModel.find({ id: id })
   res.json(product)
 })
 
