@@ -5,6 +5,8 @@ const PORT = process.env.PORT ?? 3000
 import { createRequire } from 'node:module'
 import { productModel } from './models/product.js'
 const require = createRequire(import.meta.url)
+import authRoutes from './Routes/auth.route.js'
+
 const user = 'KevinAlexander13'
 const password = 'Aka13020303'
 const dbname = 'SellAll'
@@ -13,7 +15,7 @@ mongoose.connect(
   `mongodb+srv://${user}:${password}@cluster0.xg7o66k.mongodb.net/${dbname}?retryWrites=true&w=majority`
 )
 
-const data = require('./products.json')
+app.use(authRoutes)
 
 app.get('/getProducts', async (req, res) => {
   await productModel.find().then((err, result) => {
