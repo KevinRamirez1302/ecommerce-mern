@@ -8,3 +8,13 @@ GET http://localhost:3000/Products/1
 
 ### Login
 POST http://localhost:3000/login
+
+### register 
+
+POST http://localhost:3000/register
+
+{
+    "name":"Kevin",
+    "email": "kevin@email.com",
+    "password":"asdasd"
+}
