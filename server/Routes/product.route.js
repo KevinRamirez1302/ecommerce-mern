@@ -1,13 +1,21 @@
-import { Router } from 'express'
+import { Router } from 'express';
 import {
   getProduct,
-  getbyidProduct
-} from '../controllers/product.controller.js'
+  getbyidProduct,
+  deleteProduct,
+  createProduct,
+} from '../controllers/product.controller.js';
 
-const router = Router()
+import { authRequired } from '../Middlewares/validateToken.js';
 
-router.get('/getProducts', getProduct)
+const router = Router();
 
-router.get('/Products/:id', getbyidProduct)
+router.get('/getProducts', authRequired, getProduct);
 
-export default router
+router.get('/Products/:id', authRequired, getbyidProduct);
+
+router.post('/createProduct', authRequired, createProduct);
+
+router.delete('/deleteProduct/:id', authRequired, deleteProduct);
+
+export default router;
