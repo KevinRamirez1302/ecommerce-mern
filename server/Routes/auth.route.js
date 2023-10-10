@@ -7,11 +7,13 @@ import {
 } from '../controllers/auth.controller.js'
 
 import { authRequired } from '../Middlewares/validateToken.js'
+import { validateSchema } from '../Middlewares/validator.auth.js'
+import { loginSchema, registerSchema } from '../schemas/auth.schema.js'
 
 const router = Router()
 
-router.post('/register', register)
-router.post('/login', login)
+router.post('/register', validateSchema(registerSchema), register)
+router.post('/login', validateSchema(loginSchema), login)
 router.post('/logout', authRequired, logout)
 router.get('/profile', authRequired, profile)
 

@@ -5,7 +5,6 @@ import {
   deleteProduct,
   createProduct
 } from '../controllers/product.controller.js'
-
 import { authRequired } from '../Middlewares/validateToken.js'
 
 const router = Router()
