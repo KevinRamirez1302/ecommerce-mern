@@ -1,27 +1,22 @@
-import { Router } from 'express';
+import { Router } from 'express'
 import {
   getProduct,
   getbyidProduct,
   deleteProduct,
-<<<<<<< HEAD
   createProduct
 } from '../controllers/product.controller.js'
 import { authRequired } from '../Middlewares/validateToken.js'
-=======
-  createProduct,
-} from '../controllers/product.controller.js';
+import { productsChema } from '../schemas/product.schema.js'
+import { validateSchema } from '../Middlewares/validator.auth.js'
 
-import { authRequired } from '../Middlewares/validateToken.js';
->>>>>>> e6ad4352465d8f7f900cfdb414516350caf444e2
+const router = Router()
 
-const router = Router();
+router.get('/getProducts', getProduct)
 
-router.get('/getProducts', getProduct);
+router.get('/Products/:id', getbyidProduct)
 
-router.get('/Products/:id', getbyidProduct);
+router.post('/createProduct',validateSchema(productsChema),createProduct)
 
-router.post('/createProduct', createProduct);
+router.delete('/deleteProduct/:id', authRequired, deleteProduct)
 
-router.delete('/deleteProduct/:id', authRequired, deleteProduct);
-
-export default router;
+export default router
