@@ -1,3 +1,5 @@
+import alienImg from '/img/alien.png';
+
 export const Register = () => {
   return (
     <>
@@ -6,7 +8,7 @@ export const Register = () => {
           className=" w-3/5 flex flex-col items-center justify-center h-80"
           action=""
         >
-          <h2 className="text-center mb-10 text-xl font-bold text-violet-800 ">
+          <h2 className="text-center mb-8 text-xl font-bold text-violet-800 ">
             Register
           </h2>
           <input
@@ -29,12 +31,13 @@ export const Register = () => {
           </button>
         </form>
         <div className=" w-2/5 h-92 flex flex-col items-center justify-center bg-gradient-to-r from-violet-800 to-fuchsia-400 ">
-          <h1 className=" m-3 font-bold text-white text-3xl">New Here ? </h1>
+          <h1 className=" m-3 font-bold  text-3xl text-white">New Here ?</h1>
           <p className="font-bold text-white text-xl text-center px-8">
             Sign up and Style at your Fingertips - Shop E-commerce Cloth Today!
           </p>
+          <img src={alienImg} className=" w-56 m-20" alt="" />
         </div>
       </section>
     </>
-  )
-}
+  );
+};
