@@ -5,6 +5,12 @@ export default {
     extend: {
       spacing: {
         92: '92vh'
+      },
+      maxWidth: {
+        10: '10rem'
+      },
+      hero: {
+        40: '40vw'
       }
     }
   },
