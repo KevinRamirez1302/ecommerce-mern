@@ -3,6 +3,7 @@ import { MainPage } from './Views/main page/main.page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Register } from './Views/register/register';
 import { Login } from './Views/login/login';
+import { AllProducts } from './Views/AllProducts/allProducts';
 import './app.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/allProducts" element={<AllProducts />} />
       </Routes>
     </BrowserRouter>
   );
