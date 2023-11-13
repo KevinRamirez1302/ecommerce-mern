@@ -1,4 +1,5 @@
-import navSvg from '/img/logo-color.svg';
+import navSvg from '/img/logo-color.svg'
+import { SideBar } from '../sidebar/sidebar.jsx'
 
 export const Navbar = () => {
   return (
@@ -66,6 +67,7 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
+      <SideBar />
     </>
-  );
-};
+  )
+}
