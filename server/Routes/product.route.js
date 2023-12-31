@@ -8,14 +8,13 @@ import {
 import { authRequired } from '../Middlewares/validateToken.js';
 import { productsChema } from '../schemas/product.schema.js';
 import { validateSchema } from '../Middlewares/validator.auth.js';
-import { get } from 'mongoose';
 
 const router = Router();
 
 router.get('/getProducts', getProduct);
 router.get('/allProducts', getProduct);
 
-router.get('/Products/:id', getbyidProduct);
+router.get('/products/:id', getbyidProduct);
 
 router.post('/createProduct', validateSchema(productsChema), createProduct);
 

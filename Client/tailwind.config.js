@@ -12,6 +12,11 @@ export default {
       hero: {
         40: '40vw',
       },
+      error404: '#659BB7',
+    },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+      montserrat: ["Montserrat', 'sans-serif"],
     },
   },
   plugins: [],

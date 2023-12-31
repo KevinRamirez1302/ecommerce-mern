@@ -1,29 +1,24 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const MainPage = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
       .get('http://localhost:3000/getProducts')
-      .then((data) => setData(data.data))
-  }, [])
+      .then((data) => setData(data.data));
+  }, []);
 
   return (
     <>
-      <div className="container flex flex-col mx-auto bg-white">
+      <div className=" container flex flex-col mx-auto bg-white">
         <div className="grid w-full grid-cols-1 my-auto mt-12 mb-8 md:grid-cols-2 xl:gap-14 md:gap-5">
           <div className=" m-10 flex flex-col justify-center col-span-1 text-center lg:text-start">
-            <div className="flex items-center justify-center mb-4 lg:justify-normal">
-              <h4 className="ml-2 text-sm font-bold tracking-widest text-primary uppercase">
-                Explore All
-              </h4>
-            </div>
-            <h1 className="mb-8 text-4xl font-extrabold leading-tight lg:text-6xl text-dark-grey-900">
+            <h1 className=" mb-8 text-xl font-extrabold  lg:text-6xl text-purple-700  ">
               Enjoy Shopping
             </h1>
-            <p className="mb-6 text-base font-normal leading-7 lg:w-3/4 text-grey-900">
+            <p className="mb-6 font-montserrat font-normal leading-7 lg:w-3/4 text-grey-900">
               Say goodbye to endless hours spent on building templates from
               scratch. Experience the quickest, most responsive, and trendiest
               dashboard solution available. Seriously.
@@ -32,7 +27,7 @@ export const MainPage = () => {
               <button className="flex items-center py-4 text-sm font-bold text-white px-7 bg-purple-blue-500 hover:bg-purple-blue-600 focus:ring-4 focus:ring-purple-blue-100 transition duration-300 rounded-xl">
                 Get started now
               </button>
-              <button className="flex items-center justify-center rounded-xl bg-purple-500 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-purple-600 active:bg-purple-700 dark:bg-purple-400 dark:text-white dark:hover:bg-purple-300 dark:active:bg-purple-200">
+              <button className="flex items-center justify-center rounded-xl bg-purple-900 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-purple-600 active:bg-purple-700 dark:bg-purple-400 dark:text-white dark:hover:bg-purple-300 dark:active:bg-purple-200">
                 Show Now !
               </button>
             </div>
@@ -63,7 +58,7 @@ export const MainPage = () => {
                 </p>
               </div>
             </div>
-          )
+          );
         })}
       </section>
       <div className=" w-full">
@@ -129,5 +124,5 @@ export const MainPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};

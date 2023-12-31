@@ -9,9 +9,14 @@ GET http://localhost:3000/Products/1
 ### Login
 POST http://localhost:3000/login
 
+ {
+    "email": "kevin.ramirez99@hotmail.com",
+    "password":"akalatronic"
+ }
+
 ### register 
 
-POST http://localhost:3000/register
+GET http://localhost:3000/profile
 
 {
     "name":"Kevin",
