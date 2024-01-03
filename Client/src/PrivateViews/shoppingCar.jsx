@@ -1,4 +1,4 @@
-export const CarSection = () => {
+export const carSection = () => {
   return (
     <>
       <section>
@@ -15,5 +15,5 @@ export const CarSection = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
