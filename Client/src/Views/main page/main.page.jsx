@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Card } from '../CardProduct/Card.jsx';
 
 export const MainPage = () => {
   const [data, setData] = useState([]);
@@ -43,21 +44,9 @@ export const MainPage = () => {
       </div>
 
       <section className="w-full flex flex-wrap p-10 items-center justify-center bg-gray-100">
-        {data.map(({ name, price, image }) => {
+        {data.map(({ name, price, image, _id }) => {
           return (
-            <div key={name} className=" flex  mx-auto px-5">
-              <div className=" max-w-[10rem] cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
-                <img
-                  className=" rounded-lg object-cover object-center"
-                  src={image}
-                  alt="product"
-                />
-                <p className="my-4 pl-4 font-bold text-gray-500">{name}</p>
-                <p className="mb-4 ml-4 text-xl font-semibold text-gray-800">
-                  {price}
-                </p>
-              </div>
-            </div>
+            <Card key={_id} id={_id} name={name} price={price} image={image} />
           );
         })}
       </section>

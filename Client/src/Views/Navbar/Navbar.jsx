@@ -3,11 +3,13 @@ import { SideBar } from '../sidebar/sidebar.jsx';
 import { useState } from 'react';
 import { UseAuth } from '../../../context/AuthContext.jsx';
 import { Link } from 'react-router-dom';
+import { IconButton } from '@chakra-ui/react';
+import { MdShoppingCart } from 'react-icons/md';
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const { isAuthenticated, user } = UseAuth();
+  const { isAuthenticated, user, Logout } = UseAuth();
 
   console.log(user);
   return (
@@ -64,20 +66,20 @@ export const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="#"
-                  className="text-sm block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/allProducts"
                   className="text-sm block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   Shop
                 </Link>
               </li>
+
+              {isAuthenticated == true ? (
+                <IconButton colorScheme="purple">
+                  <MdShoppingCart color="white" />
+                </IconButton>
+              ) : (
+                <></>
+              )}
 
               {isAuthenticated == false ? (
                 <>
@@ -101,8 +103,8 @@ export const Navbar = () => {
               ) : (
                 <li>
                   <Link
+                    onClick={() => Logout()}
                     className="m-1 text-purple-800 font-bold text-lg"
-                    to="/logout"
                   >
                     Logout
                   </Link>

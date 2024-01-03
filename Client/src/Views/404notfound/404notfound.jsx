@@ -7,8 +7,8 @@ export const Notfound = () => {
           <h3 className="font-serif font-semibold text-3xl">Sorry...</h3>
         </div>
         <img
-          className=" md:w-2/4 rounded-lg justify-center items-center"
-          src="https://pbs.twimg.com/media/EpAnlCnXcAYow0j.jpg:large"
+          className=" h-auto md:w-2/4 rounded-lg justify-center items-center"
+          src="https://i.pinimg.com/736x/54/dc/cd/54dccd2d2dcfc0ad9ace15432dc5ab14.jpg"
           alt=""
         />
       </section>
