@@ -1,17 +1,17 @@
-import navSvg from '/img/logo-color.svg';
-import { SideBar } from '../sidebar/sidebar.jsx';
-import { useState } from 'react';
-import { UseAuth } from '../../../context/AuthContext.jsx';
-import { Link } from 'react-router-dom';
-import { IconButton } from '@chakra-ui/react';
-import { MdShoppingCart } from 'react-icons/md';
+import navSvg from '/img/logo-color.svg'
+import { SideBar } from '../sidebar/sidebar.jsx'
+import { useState } from 'react'
+import { UseAuth } from '../../../context/AuthContext.jsx'
+import { Link } from 'react-router-dom'
+import { IconButton } from '@chakra-ui/react'
+import { MdShoppingCart } from 'react-icons/md'
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
-  const { isAuthenticated, user, Logout } = UseAuth();
+  const { isAuthenticated, user, Logout } = UseAuth()
 
-  console.log(user);
+  console.log(user)
   return (
     <>
       <nav className=" bg-white border-gray-200 dark:bg-gray-900 ">
@@ -74,9 +74,11 @@ export const Navbar = () => {
               </li>
 
               {isAuthenticated == true ? (
-                <IconButton colorScheme="purple">
-                  <MdShoppingCart color="white" />
-                </IconButton>
+                <Link to={'/ShoppingCar'}>
+                  <IconButton colorScheme="purple">
+                    <MdShoppingCart color="white" />
+                  </IconButton>
+                </Link>
               ) : (
                 <></>
               )}
@@ -116,5 +118,5 @@ export const Navbar = () => {
       </nav>
       {open == true ? <SideBar /> : <></>}
     </>
-  );
-};
+  )
+}
