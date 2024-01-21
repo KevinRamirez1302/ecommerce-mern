@@ -11,13 +11,14 @@ export const getProduct = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  const { name, price, image, description } = req.body;
+  const { name, price, image, description, quantity } = req.body;
 
   const newProduct = new productModel({
     name,
     description,
     price,
     image,
+    quantity,
   });
 
   await newProduct.save();

@@ -6,6 +6,7 @@ const PORT = process.env.PORT ?? 3000;
 import authRoutes from './Routes/auth.route.js';
 import taskRoutes from './Routes/tasks.route.js';
 import productRoutes from './Routes/product.route.js';
+import shopCarRoutes from './Routes/shopCar.route.js';
 import { connnectDB } from './Db.js';
 
 app.use(
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(taskRoutes);
 app.use(authRoutes);
+app.use(shopCarRoutes);
 app.use(productRoutes);
 
 connnectDB();
