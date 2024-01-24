@@ -14,7 +14,7 @@ export const CarProduct = (props) => {
             className=" max-w-20 max-h-26 h-26 w-20"
           />
         </figure>
-        <p>{props.name}</p>
+        <p className=" max-w-10">{props.name}</p>
         <p>{props.price}$</p>
         <button onClick={() => deleteProduct(props.id)}>
           <FaTrashCan />

@@ -26,16 +26,13 @@ export const ShopCarProvider = ({ children }) => {
   };
 
   const AddProduct = async (newProduct) => {
-    const existingProduct = await allProduct.find(
-      (product) => product._id === newProduct._id
+    const existingProduct = allProduct.find(
+      ({ _id }) => _id === newProduct._id
     );
-
-    console.log(existingProduct);
-
-    try {
-      addShoppinCar(newProduct);
-    } catch (err) {
-      console.log(err);
+    if (existingProduct) {
+      console.log('ya existe el producto');
+    } else {
+      console.log('No existe, se ha guardado');
     }
   };
 
