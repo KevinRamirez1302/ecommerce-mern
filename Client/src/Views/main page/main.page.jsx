@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Card } from '../CardProduct/Card.jsx';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Card } from '../CardProduct/Card.jsx'
 
 export const MainPage = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   useEffect(() => {
     axios
       .get('http://localhost:3000/getProducts')
-      .then((data) => setData(data.data));
-  }, []);
+      .then((data) => setData(data.data))
+  }, [])
 
   return (
     <>
       <div className=" container flex flex-col mx-auto bg-white">
         <div className="grid w-full grid-cols-1 my-auto mt-12 mb-8 md:grid-cols-2 xl:gap-14 md:gap-5">
           <div className=" m-10 flex flex-col justify-center col-span-1 text-center lg:text-start">
-            <h1 className=" mb-8 text-xl font-extrabold  lg:text-6xl text-purple-700  ">
+            <h1 className="  mb-8 text-4xl font-extrabold  lg:text-6xl text-purple-700  ">
               Enjoy Shopping
             </h1>
             <p className="mb-6 font-montserrat font-normal leading-7 lg:w-3/4 text-grey-900">
@@ -47,7 +47,7 @@ export const MainPage = () => {
         {data.map(({ name, price, image, _id }) => {
           return (
             <Card key={_id} id={_id} name={name} price={price} image={image} />
-          );
+          )
         })}
       </section>
       <div className=" w-full">
@@ -113,5 +113,5 @@ export const MainPage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

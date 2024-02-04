@@ -1,28 +1,28 @@
-import background from '/img/welcome.png';
-import { useForm } from 'react-hook-form';
-import { UseAuth } from '../../../context/AuthContext';
-import { Link, Navigate } from 'react-router-dom';
-import { Alert, AlertIcon, useToast } from '@chakra-ui/react';
+import background from '/img/welcome.png'
+import { useForm } from 'react-hook-form'
+import { UseAuth } from '../../../context/AuthContext'
+import { Link, Navigate } from 'react-router-dom'
+import { Alert, AlertIcon, useToast } from '@chakra-ui/react'
 
 export const Login = () => {
-  const toast = useToast();
+  const toast = useToast()
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth();
+    formState: { errors }
+  } = useForm()
+  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth()
 
   const onSubmit = async (data) => {
     const dataSave = {
       email: data.email,
-      password: data.password,
-    };
+      password: data.password
+    }
 
-    await Login(dataSave);
-  };
+    await Login(dataSave)
+  }
 
-  if (isAuthenticated == true) return <Navigate to="/profile" replace />;
+  if (isAuthenticated == true) return <Navigate to="/profile" replace />
   return (
     <>
       <section className="w-full h-92 flex items-center justify-center">
@@ -73,7 +73,7 @@ export const Login = () => {
             </Link>
           </p>
         </div>
-        <div className=" w-2/5 h-92 flex flex-col items-center justify-center bg-gradient-to-r from-violet-800 to-fuchsia-400">
+        <div className=" hidden  md:flex w-2/5 h-92  flex-col items-center justify-center bg-gradient-to-r from-violet-800 to-fuchsia-400">
           <h1 className=" m-3 font-bold text-white text-3xl">
             Hey! Welcome back
           </h1>
@@ -81,5 +81,5 @@ export const Login = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
