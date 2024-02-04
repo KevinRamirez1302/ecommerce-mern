@@ -7,8 +7,8 @@ export const CarSection = () => {
 
   return (
     <>
-      <section className="flex items-center justify-between h-[80vh]">
-        <div className="h-auto w-1/2">
+      <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+        <div className="md:flex-col m-4">
           {allProduct.map(({ name, image, _id, price, quantity }) => (
             <CarProduct
               id={_id}
@@ -21,13 +21,12 @@ export const CarSection = () => {
           ))}
         </div>
 
-        <div className=" flex flex-col items-center justify-center h-auto w-1/2">
-          <div>
-            <p className=" text-neutral-500">
-              Total(Include Shipping): {totalPrice()}$
-            </p>
-          </div>
-          <Button className=" m-4" color={'white'} colorScheme="purple">
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-neutral-500"> Sub total: {totalPrice()}</p>
+          <p className="text-neutral-500">
+            Total(Include Shipping): {parseInt(totalPrice()) + 4.99}$
+          </p>
+          <Button className="mt-4" color={'white'} colorScheme="purple">
             CHECKOUT
           </Button>
         </div>

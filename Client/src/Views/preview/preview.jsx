@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { UseShopCar } from '../../../context/ShoppingContext';
 
 export const ProductPreview = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { AddProduct } = UseShopCar();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -87,7 +89,10 @@ export const ProductPreview = () => {
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ${product.price}
                 </span>
-                <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                <button
+                  onClick={() => AddProduct(product)}
+                  className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                >
                   Add car
                 </button>
               </div>

@@ -8,17 +8,17 @@ export const Card = (props) => {
   const { isAuthenticated } = UseAuth();
   return (
     <>
-      <div className=" mx-5 flex flex-col max-w-[10rem] cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
+      <div className="  m-5 flex flex-col max-w-[10rem] cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
         <Link to={`/products/${props.id}`}>
           <div className="flex justify-center">
             <img
-              className=" rounded-lg max-h-36 object-cover object-center"
+              className=" rounded-lg max-h-36  object-cover object-center"
               src={props.image}
               alt="product"
             />
           </div>
         </Link>
-        <p className="my-4 pl-4 font-semibold text-xs text-gray-500">
+        <p className="my-4 pl-4 font-semibold text-xs text-gray-500 whitespace-nowrap truncate">
           {props.name}
         </p>
         <p className="mb-4 ml-4 text-md font-semibold text-gray-800">

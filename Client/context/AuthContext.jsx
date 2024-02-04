@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect } from 'react';
 import { registerRequest, loginRequest } from '../api/auth';
 import Cookies from 'js-cookie';
 import { verifyToken } from '../api/auth';
+import { Navigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     Cookies.remove('token');
     setIsAuthenticated(false);
     setUser(null);
-    window.location.reload();
+    <Navigate to="/logout" replace />;
   };
 
   useEffect(() => {

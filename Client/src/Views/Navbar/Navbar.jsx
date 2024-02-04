@@ -1,17 +1,23 @@
-import navSvg from '/img/logo-color.svg'
-import { SideBar } from '../sidebar/sidebar.jsx'
-import { useState } from 'react'
-import { UseAuth } from '../../../context/AuthContext.jsx'
-import { Link } from 'react-router-dom'
-import { IconButton } from '@chakra-ui/react'
-import { MdShoppingCart } from 'react-icons/md'
+import navSvg from '/img/logo-color.svg';
+import { SideBar } from '../sidebar/sidebar.jsx';
+import { AdminSideBar } from '../sidebar/adminsidebar.jsx';
+import { useState } from 'react';
+import { UseAuth } from '../../../context/AuthContext.jsx';
+import { Link } from 'react-router-dom';
+import { IconButton } from '@chakra-ui/react';
+import { MdShoppingCart } from 'react-icons/md';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const { isAuthenticated, user, Logout } = UseAuth()
+  const variants = {
+    open: { x: 0 },
+    closed: { x: -100, transition: { duration: 0.3 } },
+  };
 
-  console.log(user)
+  const { isAuthenticated, user, Logout } = UseAuth();
+
   return (
     <>
       <nav className=" bg-white border-gray-200 dark:bg-gray-900 ">
@@ -116,7 +122,33 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-      {open == true ? <SideBar /> : <></>}
+      {open == true ? (
+        <AnimatePresence>
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={variants}
+            style={{
+              position: 'fixed',
+              zIndex: 2,
+              top: 0,
+              left: 0,
+              width: '30%',
+              height: '100%',
+              background: 'white',
+            }}
+          >
+            {isAuthenticated == false ? (
+              <SideBar />
+            ) : (
+              <AdminSideBar name={user.name} />
+            )}
+          </motion.div>
+        </AnimatePresence>
+      ) : (
+        <></>
+      )}
     </>
-  )
-}
+  );
+};

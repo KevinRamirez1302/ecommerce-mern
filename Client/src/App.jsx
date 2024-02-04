@@ -14,6 +14,7 @@ import { ProtectedRoute } from './ProtectedRoute.jsx';
 import { Profile } from './PrivateViews/profile.jsx';
 import { CarSection } from '../src/PrivateViews/shoppingCar.jsx';
 import { ShopCarProvider } from '../context/ShoppingContext.jsx';
+import { Logout } from './Views/logout/logout.jsx';
 function App() {
   return (
     <AuthProvider>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/allProducts" element={<AllProducts />} />
             <Route path="/products/:id" element={<ProductPreview />} />
             <Route path="/about" element={<AboutSection />} />
+            <Route path="/logout" element={<Logout />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<Profile />} />
               <Route path="/aprobado" element={<Aprobado />} />

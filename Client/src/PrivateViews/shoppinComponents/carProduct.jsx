@@ -5,18 +5,28 @@ export const CarProduct = (props) => {
   const { deleteProduct } = UseShopCar();
   return (
     <>
-      <div className=" content-between flex justify-around items-center p-2 bg-slate-100 rounded-sm">
-        <p>{props.quantity}</p>
-        <figure className=" max-w-20 w-20">
+      <div
+        key={props.id}
+        className="flex items-center p-2  bg-white  border-y-2 "
+      >
+        <figure>
           <img
             src={props.image}
-            alt=""
-            className=" max-w-20 max-h-26 h-26 w-20"
+            alt={props.name}
+            className="h-16 w-16 flex-shrink-0 object-cover rounded-md"
           />
         </figure>
-        <p>{props.name}</p>
-        <p>{props.price}$</p>
-        <button onClick={() => deleteProduct(props.id)}>
+
+        <div className="ml-4 flex-1 ">
+          <p className="text-lg font-semibold">{props.name}</p>
+          <p className="text-gray-500">
+            ${props.price} x {props.quantity}
+          </p>
+        </div>
+        <button
+          onClick={() => deleteProduct(props.id)}
+          className="text-red-500 hover:text-red-700"
+        >
           <FaTrashCan />
         </button>
       </div>

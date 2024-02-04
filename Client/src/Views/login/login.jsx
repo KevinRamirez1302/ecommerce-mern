@@ -2,8 +2,10 @@ import background from '/img/welcome.png';
 import { useForm } from 'react-hook-form';
 import { UseAuth } from '../../../context/AuthContext';
 import { Link, Navigate } from 'react-router-dom';
+import { Alert, AlertIcon, useToast } from '@chakra-ui/react';
 
 export const Login = () => {
+  const toast = useToast();
   const {
     register,
     handleSubmit,
@@ -34,9 +36,10 @@ export const Login = () => {
               Login
             </h2>
             {LoginErrors.map((error, i) => (
-              <p className=" bg-red-500 text-white m-1" key={i}>
+              <Alert key={i} status="error">
+                <AlertIcon />
                 {error}
-              </p>
+              </Alert>
             ))}
 
             <input
