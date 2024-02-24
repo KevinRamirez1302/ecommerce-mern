@@ -4,7 +4,16 @@ import { AdminSideBar } from '../sidebar/adminsidebar.jsx';
 import { useState } from 'react';
 import { UseAuth } from '../../../context/AuthContext.jsx';
 import { Link } from 'react-router-dom';
-import { IconButton } from '@chakra-ui/react';
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuGroup,
+  MenuItem,
+  Button,
+  MenuList,
+  MenuDivider,
+} from '@chakra-ui/react';
 import { MdShoppingCart } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -45,7 +54,22 @@ export const Navbar = () => {
                 <Link>
                   {isAuthenticated == true ? (
                     <>
-                      <p>Welcome {user.name}</p>
+                      <Menu>
+                        <MenuButton as={Button} colorScheme="pink">
+                          Profile
+                        </MenuButton>
+                        <MenuList>
+                          <MenuGroup title="Profile">
+                            <MenuItem>My Account</MenuItem>
+                            <MenuItem>Payments </MenuItem>
+                          </MenuGroup>
+                          <MenuDivider />
+                          <MenuGroup title="Help">
+                            <MenuItem>Docs</MenuItem>
+                            <MenuItem>FAQ</MenuItem>
+                          </MenuGroup>
+                        </MenuList>
+                      </Menu>
                     </>
                   ) : (
                     <></>

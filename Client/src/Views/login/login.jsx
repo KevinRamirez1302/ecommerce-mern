@@ -1,28 +1,39 @@
-import background from '/img/welcome.png'
-import { useForm } from 'react-hook-form'
-import { UseAuth } from '../../../context/AuthContext'
-import { Link, Navigate } from 'react-router-dom'
-import { Alert, AlertIcon, useToast } from '@chakra-ui/react'
+import background from '/img/welcome.png';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { UseAuth } from '../../../context/AuthContext';
+import { Link, Navigate } from 'react-router-dom';
+import {
+  Alert,
+  AlertIcon,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+} from '@chakra-ui/react';
 
 export const Login = () => {
-  const toast = useToast()
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm()
-  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth()
+    formState: { errors },
+  } = useForm();
+  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth();
 
   const onSubmit = async (data) => {
     const dataSave = {
       email: data.email,
-      password: data.password
-    }
+      password: data.password,
+    };
 
-    await Login(dataSave)
-  }
+    await Login(dataSave);
+  };
 
-  if (isAuthenticated == true) return <Navigate to="/profile" replace />
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => setShow(!show);
+
+  if (isAuthenticated == true) return <Navigate to="/profile" replace />;
   return (
     <>
       <section className="w-full h-92 flex items-center justify-center">
@@ -42,19 +53,34 @@ export const Login = () => {
               </Alert>
             ))}
 
-            <input
-              className="w-80 bg-gray-200 transition-all m-1 text-black p-2 focus:outline-none px-4 focus:outline-violet-800 rounded"
-              type="email"
-              placeholder="email"
+            <Input
+              margin={2}
+              variant="filled"
+              htmlSize={25}
+              width="auto"
+              placeholder="Name"
+              focusBorderColor="purple.400"
               {...register('email', { required: 'Email is required' })}
             />
             {errors.email && <p className=" text-red-500">Email is required</p>}
-            <input
-              className=" w-80 bg-gray-200 transition-all m-1 focus:outline-none text-black p-2 px-4 focus:outline-violet-800 rounded"
-              type="text"
-              placeholder="Password"
-              {...register('password', { required: 'Password is required' })}
-            />
+
+            <InputGroup htmlSize={20} width="auto" size="md">
+              <Input
+                pr="4.5rem"
+                type={show ? 'text' : 'password'}
+                placeholder="Enter password"
+                htmlSize={18}
+                width="auto"
+                focusBorderColor="purple.400"
+                variant="filled"
+                {...register('password', { required: 'Password is required' })}
+              />
+              <InputRightElement width="4rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? 'Hide' : 'Show'}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
 
             {errors.password && (
               <p className=" text-red-500">Password is required</p>
@@ -81,5 +107,5 @@ export const Login = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
