@@ -1,6 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { CarProduct } from '../PrivateViews/shoppinComponents/carProduct.jsx';
 import { UseShopCar } from '../../context/ShoppingContext.jsx';
+import {Link} from "react-router-dom"
 
 export const CarSection = () => {
   const { allProduct, totalPrice } = UseShopCar();
@@ -27,7 +28,7 @@ export const CarSection = () => {
             Total(Include Shipping): {parseInt(totalPrice()) + 4.99}$
           </p>
           <Button className="mt-4" color={'white'} colorScheme="purple">
-            CHECKOUT
+            <Link to='Payment'>CHECKOUT</Link>
           </Button>
         </div>
       </section>
