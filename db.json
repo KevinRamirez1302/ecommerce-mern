@@ -1,0 +1,119 @@
+[{
+
+    "name" :"Columbia Plateau Venture Mid ",
+    "description": "Columbia Plateau Venture Mid - Tenis de senderismo para hombre",
+    "category": ["shoes","men"],
+    "price":59.99,
+    "image": "https://m.media-amazon.com/images/I/617HA70FdNL._AC_SY675_.jpg",
+    "quantity": 1
+    
+    },
+    {
+    
+    "name" :"adidas Terrex Ax4",
+    "description": "s Men's Terrex Ax4",
+    "category": ["shoes","men"],
+    "price":64.03,
+    "image": "https://m.media-amazon.com/images/I/61LCKvouJqL._AC_SY675_.jpg",
+    "quantity": 5
+    
+    },
+    {
+    
+    "name" :"NORTIV 8 Botas de senderismo",
+    "description": "NORTIV 8 Botas de senderismo impermeables para hombre, zapatos de montañismo para mochileros",
+    "category": ["shoes","men"],
+    "price":22.99,
+    "image": "https://m.media-amazon.com/images/I/51s2FAs2GWL._AC_SX679_.jpg",
+    "quantity": 1
+    
+    },{
+    
+        "name" :"ASUS TUF Gaming F15",
+        "description": "ASUS TUF Gaming F15 - Laptop para juegos, pantalla FHD de 15.6 pulgadas, 144 Hz, procesador Intel Core i5-11400H, GeForce RTX 2050, 8 GB DDR4 RAM, 512 GB PCIe SSD Gen 3, Wi-Fi 6, Windows 11,",
+        "category": ["videogames","tech"],
+        "price":699.99,
+        "image": "https://m.media-amazon.com/images/I/91aWfctUptL._AC_SL1500_.jpg",
+        "quantity": 1
+        
+        },
+        {
+    
+            "name" :"Super Mario Bros.™ Wonder",
+            "description": "Super Mario Bros.™ Wonder - Nintendo Switch (US Version)",
+            "category": ["videogame"],
+            "price":50.00,
+            "image": "https://m.media-amazon.com/images/I/81KYcp48kgL._SL1500_.jpg",
+            "quantity": 10
+            
+            },
+            {
+    
+                "name" :"Apple - iPhone 12, 64GB",
+                "description": "Apple - iPhone 12, 64GB, negro, totalmente desbloqueado (reacondicionado)",
+                "category": ["phone"],
+                "price":15.99,
+                "image": "https://m.media-amazon.com/images/I/41bIlvE1rdL._AC_SL1000_.jpg",
+                "quantity": 1
+                
+                },
+                {
+    
+                    "name" :"Mario Kart 8 Deluxe",
+                    "description": "Mario Kart 8 Deluxe (interruptor de pilas) UK IMPORT",
+                    "category": ["videogame"],
+                    "price":49.99,
+                    "image": "https://m.media-amazon.com/images/I/91vd7WQ1acL._SL1500_.jpg",
+                    "quantity": 5
+                    
+                    },
+                    {
+    
+                        "name" :"Xbox Series X",
+                        "description": "Xbox Series X",
+                        "category": ["videogame"],
+                        "price":449,
+                        "image": "https://m.media-amazon.com/images/I/51ojzJk77qL._SL1500_.jpg",
+                        "quantity": 11
+                        
+                        }, {
+    
+                            "name" :"PlayStation 4 Slim 1TB Console",
+                            "description": "PlayStation 4 Slim 1TB Console - Black (Renewed)",
+                            "category": ["videogame"],
+                            "price": 227.95,
+                            "image": "https://m.media-amazon.com/images/I/71pFnHBrvgL._SL1500_.jpg",
+                            "quantity": 1
+                            
+                            },
+                            {
+    
+                                "name" :"New Balance Fresh Foam Roav V1",
+                                "description": "New Balance Fresh Foam Roav V1 - Zapatos deportivos para mujer",
+                                "category": ["shoes","women"],
+                                "price":70,
+                                "image": "https://m.media-amazon.com/images/I/51P50cCwOaL._AC_SY675_.jpg",
+                                "quantity": 15
+                                
+                                },
+                                {
+    
+                                    "name" :"Nike Air Force One",
+                                    "description": "Nike Zapatillas para mujer",
+                                    "category": ["shoes","women"],
+                                    "price":110,
+                                    "image": "https://m.media-amazon.com/images/I/41BZ44p8m5L._AC_SY675_.jpg",
+                                    "quantity": 1
+                                    
+                                    },
+                                    {
+    
+                                        "name" :"Nike Revolution 5 para mujer",
+                                        "description": "Nike Revolution 5 Tenis de correr para mujer",
+                                        "category": ["shoes","women"],
+                                        "price":83,
+                                        "image": "https://m.media-amazon.com/images/I/61JvecDEtRL._AC_SY675_.jpg",
+                                        "quantity": 1
+                                        
+                                        }
+    ]

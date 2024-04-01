@@ -1,11 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
   name: String,
   description: String,
+  category: Array,
   price: Number,
   image: String,
-  quantity: Number,
-});
+  quantity: Number
+})
 
-export const productModel = mongoose.model('Product', productSchema);
+export const productModel = mongoose.model('Product', productSchema)

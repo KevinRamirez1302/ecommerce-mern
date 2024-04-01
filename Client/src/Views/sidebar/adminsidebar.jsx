@@ -1,7 +1,11 @@
-import Logo from '/img/logo-color.svg';
-import Shopping from '/img/shopping-cart.png';
+import Logo from '/img/logo-color.svg'
+import Shopping from '/img/shopping-cart.png'
+import { Link } from 'react-router-dom'
+import { UseAuth } from '../../../context/AuthContext'
 
 export const AdminSideBar = (props) => {
+  const { isAuthenticated, Logout } = UseAuth()
+
   return (
     <>
       <div className="md:hidden container flex flex-col mx-auto bg-white">
@@ -66,7 +70,7 @@ export const AdminSideBar = (props) => {
               <div>
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
                   <a
-                    href="/allProducts:;"
+                    href="/allProducts"
                     className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
                   >
                     Shop
@@ -84,11 +88,35 @@ export const AdminSideBar = (props) => {
                   </a>
                 </span>
               </div>
+              {isAuthenticated == false ? (
+                <>
+                  <Link
+                    className="m-1 text-purple-800 font-bold text-lg"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+
+                  <Link
+                    className="m-1 rounded-xl bg-purple-900 px-3 py-2  font-medium text-white transition duration-200 hover:bg-purple-600 active:bg-purple-700 dark:bg-purple-400 dark:text-white dark:hover:bg-purple-300 dark:active:bg-purple-200"
+                    to="/register"
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  onClick={() => Logout()}
+                  className="m-1 text-purple-800 font-bold text-lg"
+                >
+                  Logout
+                </Link>
+              )}
             </div>
           </div>
         </aside>
       </div>
       <div className="flex flex-wrap ml-9 my-5"></div>
     </>
-  );
-};
+  )
+}

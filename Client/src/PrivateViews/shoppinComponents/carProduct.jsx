@@ -1,13 +1,13 @@
-import { FaTrashCan } from 'react-icons/fa6';
-import { UseShopCar } from '../../../context/ShoppingContext';
+import { FaTrashCan } from 'react-icons/fa6'
+import { UseShopCar } from '../../../context/ShoppingContext'
 
 export const CarProduct = (props) => {
-  const { deleteProduct } = UseShopCar();
+  const { deleteProduct } = UseShopCar()
   return (
     <>
       <div
         key={props.id}
-        className="flex items-center p-2  bg-white  border-y-2 "
+        className="flex items-center p-4  bg-white  border-y-2 "
       >
         <figure>
           <img
@@ -17,7 +17,7 @@ export const CarProduct = (props) => {
           />
         </figure>
 
-        <div className="ml-4 flex-1 ">
+        <div className="m-4 pl-8 pr-8 flex-1 ">
           <p className="text-lg font-semibold">{props.name}</p>
           <p className="text-gray-500">
             ${props.price} x {props.quantity}
@@ -31,5 +31,5 @@ export const CarProduct = (props) => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}

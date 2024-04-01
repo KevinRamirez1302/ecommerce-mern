@@ -1,9 +1,9 @@
-import navSvg from '/img/logo-color.svg';
-import { SideBar } from '../sidebar/sidebar.jsx';
-import { AdminSideBar } from '../sidebar/adminsidebar.jsx';
-import { useState } from 'react';
-import { UseAuth } from '../../../context/AuthContext.jsx';
-import { Link } from 'react-router-dom';
+import navSvg from '/img/logo-color.svg'
+import { SideBar } from '../sidebar/sidebar.jsx'
+import { AdminSideBar } from '../sidebar/adminsidebar.jsx'
+import { useState } from 'react'
+import { UseAuth } from '../../../context/AuthContext.jsx'
+import { Link } from 'react-router-dom'
 import {
   IconButton,
   Menu,
@@ -12,20 +12,20 @@ import {
   MenuItem,
   Button,
   MenuList,
-  MenuDivider,
-} from '@chakra-ui/react';
-import { MdShoppingCart } from 'react-icons/md';
-import { motion, AnimatePresence } from 'framer-motion';
+  MenuDivider
+} from '@chakra-ui/react'
+import { MdShoppingCart } from 'react-icons/md'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const variants = {
     open: { x: 0 },
-    closed: { x: -100, transition: { duration: 0.3 } },
-  };
+    closed: { x: -100, transition: { duration: 0.3 } }
+  }
 
-  const { isAuthenticated, user, Logout } = UseAuth();
+  const { isAuthenticated, user, Logout } = UseAuth()
 
   return (
     <>
@@ -60,8 +60,12 @@ export const Navbar = () => {
                         </MenuButton>
                         <MenuList>
                           <MenuGroup title="Profile">
-                            <MenuItem>My Account</MenuItem>
-                            <MenuItem>Payments </MenuItem>
+                            <MenuItem>
+                              <Link to="/Profile">My Account</Link>
+                            </MenuItem>
+                            <MenuItem>
+                              <Link>Payments</Link>{' '}
+                            </MenuItem>
                           </MenuGroup>
                           <MenuDivider />
                           <MenuGroup title="Help">
@@ -79,7 +83,7 @@ export const Navbar = () => {
 
               <li>
                 <Link
-                  to="#"
+                  to="/"
                   className=" block py-2 pl-3 pr-4 text-white text-sm bg-blue-700 rounded md:bg-transparent md:text-violet-700 md:p-0 dark:text-white md:dark:text-blue-500"
                   aria-current="page"
                 >
@@ -104,11 +108,11 @@ export const Navbar = () => {
               </li>
 
               {isAuthenticated == true ? (
-                <Link to={'/ShoppingCar'}>
+                <a href="/ShoppingCar">
                   <IconButton colorScheme="purple">
                     <MdShoppingCart color="white" />
                   </IconButton>
-                </Link>
+                </a>
               ) : (
                 <></>
               )}
@@ -160,7 +164,7 @@ export const Navbar = () => {
               left: 0,
               width: '30%',
               height: '100%',
-              background: 'white',
+              background: 'white'
             }}
           >
             {isAuthenticated == false ? (
@@ -174,5 +178,5 @@ export const Navbar = () => {
         <></>
       )}
     </>
-  );
-};
+  )
+}
