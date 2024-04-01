@@ -32,7 +32,6 @@ function App() {
             <Route path="/products/:id" element={<ProductPreview />} />
             <Route path="/about" element={<AboutSection />} />
             <Route path="/logout" element={<Logout />} />
-
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<Profile />} />
               <Route path="/ShoppingCar/Payment" element={<Payment />} />
