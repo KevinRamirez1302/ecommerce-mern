@@ -60,7 +60,7 @@ export const NavbarAuth = () => {
                 </a>
               </li>
               <li>
-                <details open>
+                <details>
                   <summary>What it is</summary>
                   <p>kjadjsadasjdjadadadasld</p>
                 </details>

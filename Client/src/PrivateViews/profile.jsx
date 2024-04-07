@@ -1,24 +1,29 @@
-import axios from 'axios';
-import { useEffect } from 'react';
 import { UseAuth } from '../../context/AuthContext';
-import { Wrap, WrapItem, Avatar } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/react';
 
 export const Profile = () => {
   const { user } = UseAuth();
+  const { name, email, id } = user;
+
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
-        <Wrap>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Dan Abrahmov"
-              src="https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png"
-            />
-          </WrapItem>
-        </Wrap>
-        <h1>Welcome {user.name}</h1>
-      </div>
+      <section className=" flex flex-col items-center w-full h-screen">
+        <div className="flex flex-col p-10 items-center gap-10 justify-center">
+          <img
+            className="w-28 rounded-md"
+            src="https://cdn.pixabay.com/photo/2023/05/08/09/33/cat-7978052_1280.jpg"
+            alt=""
+          />
+          <h1 className=" font-bold text-2xl text-gray-600">
+            Welcome {name.toUpperCase()}
+          </h1>
+        </div>
+        <h1 className="font-bold text-2xl mb-5 text-gray-600">Your Data</h1>
+        <div className="flex flex-col gap-4">
+          <Input value={email} />
+          <Input value={id} />
+        </div>
+      </section>
     </>
   );
 };

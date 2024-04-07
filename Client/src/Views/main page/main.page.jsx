@@ -1,15 +1,38 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Card } from '../CardProduct/Card.jsx'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Card } from '../CardProduct/Card.jsx';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 export const MainPage = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024,
+      },
+      items: 5,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0,
+      },
+      items: 1,
+    },
+  };
 
   useEffect(() => {
     axios
       .get('http://localhost:3000/getProducts')
-      .then((data) => setData(data.data))
-  }, [])
+      .then((data) => setData(data.data));
+  }, []);
 
   return (
     <>
@@ -42,14 +65,18 @@ export const MainPage = () => {
           </div>
         </div>
       </div>
-
-      <section className="flex flex-wrap md:p-10 items-center justify-center bg-gray-100">
+      <Carousel
+        autoPlay="true"
+        autoPlaySpeed={2000}
+        className=" border-l-orange-500"
+        responsive={responsive}
+      >
         {data.map(({ name, price, image, _id }) => {
           return (
             <Card key={_id} id={_id} name={name} price={price} image={image} />
-          )
+          );
         })}
-      </section>
+      </Carousel>
     </>
-  )
-}
+  );
+};

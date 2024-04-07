@@ -1,18 +1,18 @@
-import { MdOutlineShoppingCart } from 'react-icons/md'
-import { Link } from 'react-router-dom'
-import { UseShopCar } from '../../../context/ShoppingContext'
-import { UseAuth } from '../../../context/AuthContext'
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { UseShopCar } from '../../../context/ShoppingContext';
+import { UseAuth } from '../../../context/AuthContext';
 
 export const Card = (props) => {
-  const { AddProduct } = UseShopCar()
-  const { isAuthenticated } = UseAuth()
+  const { AddProduct } = UseShopCar();
+  const { isAuthenticated } = UseAuth();
   return (
     <>
-      <div className=" m-5 flex flex-col max-w-48 w-48   cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
+      <div className=" m-5 flex flex-col max-w-48 w-48  cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
         <Link to={`/products/${props.id}`}>
           <div className="flex justify-center">
             <img
-              className=" rounded-lg  max-h-36  object-cover object-center"
+              className=" rounded-lg max-h-36 h-32 object-cover object-center"
               src={props.image}
               alt="product"
             />
@@ -38,5 +38,5 @@ export const Card = (props) => {
         <></>
       </div>
     </>
-  )
-}
+  );
+};
