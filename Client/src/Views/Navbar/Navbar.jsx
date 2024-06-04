@@ -1,9 +1,9 @@
-import navSvg from '/img/logo-color.svg';
-import { SideBar } from '../sidebar/sidebar.jsx';
-import { AdminSideBar } from '../sidebar/adminsidebar.jsx';
-import { useState } from 'react';
-import { UseAuth } from '../../../context/AuthContext.jsx';
-import { Link } from 'react-router-dom';
+import navSvg from '/img/logo-color.svg'
+import { SideBar } from '../sidebar/sidebar.jsx'
+import { AdminSideBar } from '../sidebar/adminsidebar.jsx'
+import { useState } from 'react'
+import { UseAuth } from '../../../context/AuthContext.jsx'
+import { Link } from 'react-router-dom'
 import {
   IconButton,
   Menu,
@@ -15,21 +15,21 @@ import {
   MenuDivider,
   Input,
   InputRightElement,
-  InputGroup,
-} from '@chakra-ui/react';
-import { MdShoppingCart } from 'react-icons/md';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiSearch } from 'react-icons/fi';
+  InputGroup
+} from '@chakra-ui/react'
+import { MdShoppingCart } from 'react-icons/md'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FiSearch } from 'react-icons/fi'
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const variants = {
     open: { x: 0 },
-    closed: { x: -100, transition: { duration: 0.3 } },
-  };
+    closed: { x: -100, transition: { duration: 0.3 } }
+  }
 
-  const { isAuthenticated, user, Logout } = UseAuth();
+  const { isAuthenticated, user, Logout } = UseAuth()
 
   return (
     <>
@@ -41,12 +41,6 @@ export const Navbar = () => {
               SellAll
             </span>
           </Link>
-          <InputGroup width={250}>
-            <Input type="tel" placeholder="Search" />
-            <InputRightElement>
-              <FiSearch />
-            </InputRightElement>
-          </InputGroup>
 
           <button
             data-collapse-toggle="navbar-default"
@@ -94,7 +88,7 @@ export const Navbar = () => {
               <li>
                 <Link
                   to="/"
-                  className=" block py-2 pl-3 pr-4 text-white text-sm bg-blue-700 rounded md:bg-transparent md:text-violet-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  className=" block py-2 pl-3 pr-4 text-white text-md bg-blue-700 rounded md:bg-transparent md:text-violet-700 md:p-0 dark:text-white md:dark:text-blue-500"
                   aria-current="page"
                 >
                   Home
@@ -103,7 +97,7 @@ export const Navbar = () => {
               <li>
                 <Link
                   to="/about"
-                  className=" text-sm block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className=" text-md block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   About
                 </Link>
@@ -111,7 +105,7 @@ export const Navbar = () => {
               <li>
                 <Link
                   to="/allProducts"
-                  className="text-sm block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="text-md block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   Shop
                 </Link>
@@ -174,7 +168,7 @@ export const Navbar = () => {
               left: 0,
               width: '30%',
               height: '100%',
-              background: 'white',
+              background: 'white'
             }}
           >
             {isAuthenticated == false ? (
@@ -188,5 +182,5 @@ export const Navbar = () => {
         <></>
       )}
     </>
-  );
-};
+  )
+}

@@ -1,11 +1,11 @@
-import { MdOutlineShoppingCart } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import { UseShopCar } from '../../../context/ShoppingContext';
-import { UseAuth } from '../../../context/AuthContext';
+import { MdOutlineShoppingCart } from 'react-icons/md'
+import { Link } from 'react-router-dom'
+import { UseShopCar } from '../../../context/ShoppingContext'
+import { UseAuth } from '../../../context/AuthContext'
 
 export const Card = (props) => {
-  const { AddProduct } = UseShopCar();
-  const { isAuthenticated } = UseAuth();
+  const { AddProduct } = UseShopCar()
+  const { isAuthenticated } = UseAuth()
   return (
     <>
       <div className=" m-5 flex flex-col max-w-48 w-48  cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
@@ -18,7 +18,7 @@ export const Card = (props) => {
             />
           </div>
         </Link>
-        <p className="my-4 pl-4 font-semibold text-xs text-gray-500 whitespace-nowrap truncate">
+        <p className="my-4 pl-4 font-semibold text-md text-gray-500 whitespace-nowrap truncate">
           {props.name}
         </p>
         <p className="mb-4 ml-4 text-md font-semibold text-gray-800">
@@ -38,5 +38,5 @@ export const Card = (props) => {
         <></>
       </div>
     </>
-  );
-};
+  )
+}

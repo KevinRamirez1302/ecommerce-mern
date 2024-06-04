@@ -1,43 +1,43 @@
-import background from '/img/welcome.png';
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { UseAuth } from '../../../context/AuthContext';
-import { Link, Navigate } from 'react-router-dom';
+import background from '/img/welcome.png'
+import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { UseAuth } from '../../../context/AuthContext'
+import { Link, Navigate } from 'react-router-dom'
 import {
   Alert,
   AlertIcon,
   Input,
   InputGroup,
   InputRightElement,
-  Button,
-} from '@chakra-ui/react';
+  Button
+} from '@chakra-ui/react'
 
 export const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth();
+    formState: { errors }
+  } = useForm()
+  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth()
 
   const onSubmit = async (data) => {
     const dataSave = {
       email: data.email,
-      password: data.password,
-    };
+      password: data.password
+    }
 
-    await Login(dataSave);
-  };
+    await Login(dataSave)
+  }
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClick = () => setShow(!show);
+  const handleClick = () => setShow(!show)
 
-  if (isAuthenticated == true) return <Navigate to="/profile" replace />;
+  if (isAuthenticated == true) return <Navigate to="/profile" replace />
   return (
     <>
       <section className="w-full h-92 flex items-center justify-center">
-        <div className="w-3/5 flex flex-col items-center justify-center h-80">
+        <div className="w-3/4 flex flex-col items-center justify-center h-80">
           <form
             className=" w-3/5 flex flex-col items-center justify-center h-80"
             action=""
@@ -93,19 +93,13 @@ export const Login = () => {
             </button>
           </form>
           <p>
-            Dont have an account ?
+            Don't have an account ?
             <Link className=" font-bold text-purple-800 " to={'/register'}>
               Register
             </Link>
           </p>
         </div>
-        <div className=" hidden  md:flex w-2/5 h-92  flex-col items-center justify-center bg-gradient-to-r from-violet-800 to-fuchsia-400">
-          <h1 className=" m-3 font-bold text-white text-3xl">
-            Hey! Welcome back
-          </h1>
-          <img className=" w-72 h-auto" src={background} alt="" />
-        </div>
       </section>
     </>
-  );
-};
+  )
+}

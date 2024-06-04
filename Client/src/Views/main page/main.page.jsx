@@ -1,48 +1,49 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Card } from '../CardProduct/Card.jsx';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Card } from '../CardProduct/Card.jsx'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { AboutuS } from '../aboutUs/aboutus.jsx'
 
 export const MainPage = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   const responsive = {
     desktop: {
       breakpoint: {
         max: 3000,
-        min: 1024,
+        min: 1024
       },
-      items: 5,
+      items: 5
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 2
     },
     mobile: {
       breakpoint: {
         max: 464,
-        min: 0,
+        min: 0
       },
-      items: 1,
-    },
-  };
+      items: 1
+    }
+  }
 
   useEffect(() => {
     axios
       .get('http://localhost:3000/getProducts')
-      .then((data) => setData(data.data));
-  }, []);
+      .then((data) => setData(data.data))
+  }, [])
 
   return (
     <>
-      <div className=" container flex flex-col mx-auto bg-white">
+      <div className=" container flex flex-col mx-auto my-20 bg-white">
         <div className="grid w-full grid-cols-1 my-auto mt-12 mb-8 md:grid-cols-2 xl:gap-14 md:gap-5">
           <div className=" m-10 flex flex-col justify-center col-span-1 text-center lg:text-start">
             <h1 className="  mb-8 text-4xl font-extrabold  lg:text-6xl text-purple-700  ">
               Enjoy Shopping
             </h1>
-            <p className="mb-6 font-montserrat font-normal leading-7 lg:w-3/4 text-grey-900">
+            <p className="mb-6 font-montserrat font-semibold  leading-7 lg:w-3/4 text-grey-900">
               Say goodbye to endless hours spent on building templates from
               scratch. Experience the quickest, most responsive, and trendiest
               dashboard solution available. Seriously.
@@ -58,7 +59,7 @@ export const MainPage = () => {
           </div>
           <div className="items-center justify-end hidden col-span-1 md:flex">
             <img
-              className=" rounded-lg"
+              className=" shadow-2xl rounded-lg"
               src="https://realestatemarket.com.mx/images/2023/02-febrero/06-02/Estrategias-ecommerce-para-los-pequenos-y-medianos-negocios.jpg"
               alt=""
             />
@@ -68,15 +69,18 @@ export const MainPage = () => {
       <Carousel
         autoPlay="true"
         autoPlaySpeed={2000}
-        className=" border-l-orange-500"
+        infinite="true"
         responsive={responsive}
+        ssr="true"
+        swipeable="true"
       >
         {data.map(({ name, price, image, _id }) => {
           return (
             <Card key={_id} id={_id} name={name} price={price} image={image} />
-          );
+          )
         })}
       </Carousel>
+      <AboutuS />
     </>
-  );
-};
+  )
+}
