@@ -15,11 +15,11 @@ export const AboutuS = () => {
             quas earum vero, ad vitae odio provident, quo quibusdam corrupti in
             ea!s
           </p>
-          <div className=" text-ellipsis justify-center my-10 lg:m-20 flex">
-            <div className=" w-full lg:w-1/3 mx-6">
+          <div className=" text-left justify-center my-10  lg:my-10 flex">
+            <div className="  w-full lg:w-1/3 mx-6">
               <div className=" items-center flex">
                 <AiFillFire size={26} color="purple" />
-                <h1 className="  font-bold">Versatil brand</h1>
+                <h1 className=" font-bold">Versatil brand</h1>
               </div>
               <p className="p-2 text-gray-500">
                 We are crafting a digital method that subsists life across all

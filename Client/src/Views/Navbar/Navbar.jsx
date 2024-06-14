@@ -12,14 +12,10 @@ import {
   MenuItem,
   Button,
   MenuList,
-  MenuDivider,
-  Input,
-  InputRightElement,
-  InputGroup
+  MenuDivider
 } from '@chakra-ui/react'
 import { MdShoppingCart } from 'react-icons/md'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiSearch } from 'react-icons/fi'
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false)
@@ -53,7 +49,7 @@ export const Navbar = () => {
             Menu
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className=" items-center font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className=" items-center font-medium text-lg flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link>
                   {isAuthenticated == true ? (
