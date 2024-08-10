@@ -8,9 +8,14 @@ import productRoutes from './Routes/product.route.js'
 import shopCarRoutes from './Routes/shopCar.route.js'
 import { connnectDB } from './Db.js'
 
+const allowedOrigins =
+  process.env.NODE_ENV === 'production'
+    ? 'https://tudominio.com'
+    : 'http://localhost:5174'
+
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: allowedOrigins,
     credentials: true
   })
 )

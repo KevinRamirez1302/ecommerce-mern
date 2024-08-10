@@ -66,20 +66,30 @@ export const MainPage = () => {
           </div>
         </div>
       </div>
-      <Carousel
-        autoPlay="true"
-        autoPlaySpeed={2000}
-        infinite="true"
-        responsive={responsive}
-        ssr="true"
-        swipeable="true"
-      >
-        {data.map(({ name, price, image, _id }) => {
-          return (
-            <Card key={_id} id={_id} name={name} price={price} image={image} />
-          )
-        })}
-      </Carousel>
+      <div className=" shadow-2xl bg-violet-500 p-4">
+        <Carousel
+          autoPlay="true"
+          autoPlaySpeed={2000}
+          infinite="true"
+          centerMode="true"
+          responsive={responsive}
+          ssr="true"
+          swipeable="true"
+        >
+          {data.map(({ name, price, image, _id }) => {
+            return (
+              <Card
+                key={_id}
+                id={_id}
+                name={name}
+                price={price}
+                image={image}
+              />
+            )
+          })}
+        </Carousel>
+      </div>
+
       <AboutuS />
     </>
   )
