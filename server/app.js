@@ -10,7 +10,7 @@ import { connnectDB } from './Db.js'
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
-    ? 'https://tudominio.com'
+    ? 'https://ecommerce-mern-tan.vercel.app/'
     : 'http://localhost:5174'
 
 app.use(
