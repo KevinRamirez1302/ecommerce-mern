@@ -1,105 +1,142 @@
-import background from '/img/welcome.png'
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { UseAuth } from '../../../context/AuthContext'
-import { Link, Navigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { UseAuth } from '../../../context/AuthContext';
+import { Link, Navigate } from 'react-router-dom';
 import {
   Alert,
   AlertIcon,
   Input,
   InputGroup,
   InputRightElement,
-  Button
-} from '@chakra-ui/react'
+  Button,
+  useToast,
+  VStack,
+} from '@chakra-ui/react';
+
+const FormInput = ({ type, placeholder, register, error, name, ...rest }) => (
+  <div className="w-full">
+    <Input
+      variant="filled"
+      focusBorderColor="purple.500"
+      placeholder={placeholder}
+      type={type}
+      className="rounded-lg shadow-sm"
+      {...register(name, { required: `${placeholder} is required` })}
+      {...rest}
+    />
+    {error && (
+      <p className="text-red-500 text-sm mt-1 font-medium">{error.message}</p>
+    )}
+  </div>
+);
 
 export const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm()
-  const { Login, errors: LoginErrors, isAuthenticated } = UseAuth()
+    formState: { errors, isSubmitting },
+  } = useForm();
+  const { Login: authLogin, errors: loginErrors, isAuthenticated } = UseAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const toast = useToast();
 
   const onSubmit = async (data) => {
-    const dataSave = {
-      email: data.email,
-      password: data.password
+    try {
+      await authLogin(data);
+    } catch (error) {
+      toast({
+        title: 'Login failed.',
+        description: 'Please check your credentials and try again.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
+  };
 
-    await Login(dataSave)
-  }
+  if (isAuthenticated) return <Navigate to="/profile" replace />;
 
-  const [show, setShow] = useState(false)
-
-  const handleClick = () => setShow(!show)
-
-  if (isAuthenticated == true) return <Navigate to="/profile" replace />
   return (
-    <>
-      <section className="w-full h-92 flex items-center justify-center">
-        <div className="w-3/4 flex flex-col items-center justify-center h-80">
-          <form
-            className=" w-3/5 flex flex-col items-center justify-center h-80"
-            action=""
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <h2 className="text-center mb-10 text-xl font-bold text-violet-800 ">
-              Login
-            </h2>
-            {LoginErrors.map((error, i) => (
-              <Alert key={i} status="error">
+    <main className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl transform transition-all duration-300 hover:shadow-2xl">
+        <h1 className="text-4xl font-extrabold text-center text-violet-800 mb-6 tracking-wide">
+          Login 🚀
+        </h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+          <VStack spacing={4}>
+            {loginErrors.length > 0 && (
+              <Alert status="error" borderRadius="lg" className="my-2">
                 <AlertIcon />
-                {error}
+                <div className="flex flex-col">
+                  {loginErrors.map((error, i) => (
+                    <span key={i} className="text-sm font-medium">
+                      {error}
+                    </span>
+                  ))}
+                </div>
               </Alert>
-            ))}
-
-            <Input
-              margin={2}
-              variant="filled"
-              htmlSize={25}
-              width="auto"
-              placeholder="Name"
-              focusBorderColor="purple.400"
-              {...register('email', { required: 'Email is required' })}
-            />
-            {errors.email && <p className=" text-red-500">Email is required</p>}
-
-            <InputGroup htmlSize={20} width="auto" size="md">
-              <Input
-                pr="4.5rem"
-                type={show ? 'text' : 'password'}
-                placeholder="Enter password"
-                htmlSize={18}
-                width="auto"
-                focusBorderColor="purple.400"
-                variant="filled"
-                {...register('password', { required: 'Password is required' })}
-              />
-              <InputRightElement width="4rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? 'Hide' : 'Show'}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-
-            {errors.password && (
-              <p className=" text-red-500">Password is required</p>
             )}
-            <button
+
+            <FormInput
+              name="email"
+              placeholder="Email"
+              register={register}
+              error={errors.email}
+            />
+
+            <div className="w-full">
+              <InputGroup size="md">
+                <Input
+                  pr="4.5rem"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  variant="filled"
+                  focusBorderColor="purple.500"
+                  className="rounded-lg shadow-sm"
+                  {...register('password', {
+                    required: 'Password is required',
+                  })}
+                />
+                <InputRightElement width="4.5rem">
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={() => setShowPassword(!showPassword)}
+                    variant="ghost"
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1 font-medium">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            <Button
               type="submit"
-              className=" bg-violet-800 pl-5 pr-5 pt-2 pb-2  w-40 m-4 text-white font-bold"
+              isLoading={isSubmitting}
+              loadingText="Entering..."
+              spinnerPlacement="start"
+              className="w-full mt-4 bg-violet-800 text-white font-bold py-3 rounded-lg hover:bg-violet-900 transition-colors duration-300"
             >
               Enter
-            </button>
-          </form>
-          <p>
-            Don't have an account ?
-            <Link className=" font-bold text-purple-800 " to={'/register'}>
-              Register
-            </Link>
-          </p>
-        </div>
-      </section>
-    </>
-  )
-}
+            </Button>
+          </VStack>
+        </form>
+
+        <p className="mt-6 text-center text-sm text-gray-600">
+          Don't have an account?
+          <Link
+            to={'/register'}
+            className="font-bold text-purple-700 hover:text-purple-500 ml-1 transition-colors duration-200"
+          >
+            Register
+          </Link>
+        </p>
+      </div>
+    </main>
+  );
+};

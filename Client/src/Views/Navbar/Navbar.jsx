@@ -1,9 +1,9 @@
-import navSvg from '/img/logo-color.svg'
-import { SideBar } from '../sidebar/sidebar.jsx'
-import { AdminSideBar } from '../sidebar/adminsidebar.jsx'
-import { useState } from 'react'
-import { UseAuth } from '../../../context/AuthContext.jsx'
-import { Link } from 'react-router-dom'
+import navSvg from '/img/logo-color.svg';
+import { SideBar } from '../sidebar/sidebar.jsx';
+import { AdminSideBar } from '../sidebar/adminsidebar.jsx';
+import { useState } from 'react';
+import { UseAuth } from '../../../context/AuthContext.jsx';
+import { Link } from 'react-router-dom';
 import {
   IconButton,
   Menu,
@@ -12,20 +12,20 @@ import {
   MenuItem,
   Button,
   MenuList,
-  MenuDivider
-} from '@chakra-ui/react'
-import { MdShoppingCart } from 'react-icons/md'
-import { motion, AnimatePresence } from 'framer-motion'
+  MenuDivider,
+} from '@chakra-ui/react';
+import { MdShoppingCart } from 'react-icons/md';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const variants = {
     open: { x: 0 },
-    closed: { x: -100, transition: { duration: 0.3 } }
-  }
+    closed: { x: -100, transition: { duration: 0.3 } },
+  };
 
-  const { isAuthenticated, user, Logout } = UseAuth()
+  const { isAuthenticated, user, Logout } = UseAuth();
 
   return (
     <>
@@ -164,7 +164,7 @@ export const Navbar = () => {
               left: 0,
               width: '30%',
               height: '100%',
-              background: 'white'
+              background: 'white',
             }}
           >
             {isAuthenticated == false ? (
@@ -178,5 +178,5 @@ export const Navbar = () => {
         <></>
       )}
     </>
-  )
-}
+  );
+};

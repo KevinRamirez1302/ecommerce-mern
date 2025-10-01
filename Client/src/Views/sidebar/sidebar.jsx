@@ -1,90 +1,118 @@
-import Logo from '/img/logo-color.svg'
-import { Link } from 'react-router-dom'
-import { UseAuth } from '../../../context/AuthContext'
-export const SideBar = () => {
-  const { isAuthenticated, Logout } = UseAuth()
+import Logo from '/img/logo-color.svg';
+import { Link, NavLink } from 'react-router-dom';
+import { UseAuth } from '../../../context/AuthContext';
+import { IoCloseSharp } from 'react-icons/io5';
+
+export const SideBar = ({ onClose }) => {
+  const { isAuthenticated, Logout } = UseAuth();
+
+  const handleLogout = () => {
+    Logout();
+    onClose();
+  };
+
+  const navLinkClass =
+    'flex items-center text-gray-700 hover:text-purple-600 transition-colors duration-200 px-4 py-3 rounded-lg';
+  const activeLinkClass = 'bg-purple-100 text-purple-600 font-bold';
 
   return (
-    <>
-      <div className=" md:hidden container flex flex-col mx-auto">
-        <div className=" flex flex-col shrink-0 lg:w-[300px] w-[250px] transition-all duration-300 ease-in-out m-0 fixed z-40 inset-y-0 left-0 bg-white border-r border-r-dashed border-r-neutral-200  ">
-          <div className="flex px-8 items-center justify-between h-[96px]">
-            <img alt="Logo" src={Logo} className="inline w-[90px] rounded-xl" />
-          </div>
-
-          <div className="relative pl-3 my-5 ">
-            <div className="flex flex-col w-full font-medium">
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="/"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Home
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="/about"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    About
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="/allProducts"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Shop
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="/ShoppingCar"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Shopping Car
-                  </a>
-                </span>
-              </div>
-              {isAuthenticated == false ? (
-                <>
-                  <Link
-                    className="m-1 text-purple-800 font-bold text-lg"
-                    to="/login"
-                  >
-                    Login
-                  </Link>
-
-                  <Link
-                    className="m-1 rounded-xl   text-lg font-bold  text-purple-900 transition duration-200"
-                    to="/register"
-                  >
-                    Sign Up
-                  </Link>
-                </>
-              ) : (
-                <Link
-                  onClick={() => Logout()}
-                  className="m-1 text-purple-800 font-bold text-lg"
-                >
-                  Logout
-                </Link>
-              )}
-            </div>
-          </div>
+    <div className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden animate-fade-in-right">
+      <aside className="relative flex flex-col w-[280px] h-full bg-white border-r border-gray-200 shadow-lg p-5">
+        <div className="flex items-center justify-between mb-8">
+          <Link to="/" onClick={onClose}>
+            <img
+              alt="SellAll Logo"
+              src={Logo}
+              className="w-[120px] rounded-xl"
+            />
+          </Link>
+          <button
+            onClick={onClose}
+            className="p-2 text-gray-500 rounded-full hover:bg-gray-100"
+          >
+            <IoCloseSharp size={24} />
+          </button>
         </div>
-      </div>
-    </>
-  )
-}
+
+        <nav className="flex-1 space-y-2">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `${navLinkClass} ${isActive ? activeLinkClass : ''}`
+            }
+            onClick={onClose}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `${navLinkClass} ${isActive ? activeLinkClass : ''}`
+            }
+            onClick={onClose}
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/allProducts"
+            className={({ isActive }) =>
+              `${navLinkClass} ${isActive ? activeLinkClass : ''}`
+            }
+            onClick={onClose}
+          >
+            Shop
+          </NavLink>
+          <NavLink
+            to="/ShoppingCar"
+            className={({ isActive }) =>
+              `${navLinkClass} ${isActive ? activeLinkClass : ''}`
+            }
+            onClick={onClose}
+          >
+            Shopping Cart
+          </NavLink>
+          {isAuthenticated && (
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `${navLinkClass} ${isActive ? activeLinkClass : ''}`
+              }
+              onClick={onClose}
+            >
+              Profile
+            </NavLink>
+          )}
+        </nav>
+
+        <div className="mt-auto pt-4 border-t border-gray-200">
+          {isAuthenticated ? (
+            <Link
+              to="/login"
+              onClick={handleLogout}
+              className="block w-full text-center px-4 py-3 font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-700 transition-colors duration-200"
+            >
+              Logout
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                onClick={onClose}
+                className="block w-full text-center px-4 py-3 font-semibold text-purple-600 border border-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-200"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                onClick={onClose}
+                className="block w-full text-center mt-2 px-4 py-3 font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-700 transition-colors duration-200"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+      </aside>
+    </div>
+  );
+};
